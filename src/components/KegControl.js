@@ -30,6 +30,7 @@ class KegControl extends React.Component {
       ],
       newFormDisplay: false,
       selectedKeg: null,
+      editing: false,
     };
   }
 
@@ -63,8 +64,15 @@ class KegControl extends React.Component {
     });
   };
 
+  handleEditKeg = (keg) => {
+    const index = this.state.controlKegList.findIndex((k) => k.id === keg.id);
+    let editedKegList = [...this.state.controlKegList];
+    editedKegList[index] = keg;
+    this.setState({ controlKegList: editedKegList, editing: false });
+  }
+
   handleSellPint = (id) => {
-    const newKegList = [...this.state.controlKegList];
+    let newKegList = [...this.state.controlKegList];
     const index = this.state.controlKegList.findIndex((k) => k.id === id);
     if (newKegList[index].pints > 0) {
       newKegList[index].pints--;
@@ -89,6 +97,15 @@ class KegControl extends React.Component {
           onDeletingKeg={this.handleDeleteKeg}
           onSellPint={this.handleSellPint}
         />
+      );
+    } else if (this.state.selectedKeg != null && this.state.editing) {
+      display = (
+        <>
+          <EditKegForm
+            onEditKeg={this.handleEditKeg}
+            closeDetail={this.handleResetClick}
+          />
+        </>
       );
     }
 
