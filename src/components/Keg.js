@@ -1,19 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function Keg(props){
-
-  const { keg } = props;
-
+function Keg(props) {
   return (
     <>
-      <p>{keg.name} - {keg.brand}: ${keg.price}/pint</p>
+      <p>
+        {props.name} - {props.brand}: ${props.price}/pint
+      </p>
     </>
   );
 }
 
 Keg.propTypes = {
-  keg: PropTypes.object,
-}
+  name: PropTypes.string,
+  brand: PropTypes.string,
+  price: PropTypes.number,
+};
 
 export default Keg;

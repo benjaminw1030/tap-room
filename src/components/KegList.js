@@ -1,11 +1,11 @@
 import React from "react";
 import Keg from "./Keg";
-import PropTypes from "./prop-types";
+import PropTypes from "prop-types";
 
 function KegList(props) {
   return (
     <>
-      {props.kegList.map((keg) => (
+      {props.kegList.map((keg) => 
         <Keg
           name={keg.name}
           brand={keg.brand}
@@ -13,7 +13,7 @@ function KegList(props) {
           id={keg.id}
           key={keg.id}
         />
-      ))}
+      )}
     </>
   );
 }
