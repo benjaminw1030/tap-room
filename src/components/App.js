@@ -5,8 +5,10 @@ import KegControl from './KegControl';
 function App() {
   return (
     <>
-      <Header />
-      <KegControl />
+      <div className="container">
+        <Header />
+        <KegControl />
+      </div>
     </>
   );
 }
