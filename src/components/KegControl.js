@@ -9,38 +9,45 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       controlKegList: [
-        { 
+        {
           name: "testname",
           brand: "testbrand",
           flavor: "testflavor",
-          alchohol: 5,
+          alcohol: 5,
           pints: 128,
           price: 4,
-          id: 1
+          id: "1",
         },
-        { 
+        {
           name: "testname2",
           brand: "testbrand2",
           flavor: "testflavor2",
-          alchohol: 4,
+          alcohol: 4,
           pints: 128,
           price: 4.5,
-          id: 2
-        }
+          id: "2",
+        },
       ],
       newFormDisplay: false,
+      selectedKeg: null,
     };
   }
 
-  handleResetClick = () => this.setState({ newFormDisplay: false });
+  handleResetClick = () =>
+    this.setState({ newFormDisplay: false, selectedKeg: null });
 
   handleNewClick = () => {
-    this.setState({ newFormDisplay: true });
+    this.setState({ newFormDisplay: true, selectedKeg: null });
   };
 
   handleNewKeg = (newKeg) => {
     const newKegList = this.state.controlKegList.concat(newKeg);
     this.setState({ controlKegList: newKegList, newFormDisplay: false });
+  };
+
+  handleSelectKeg = (id) => {
+    const selectedKeg = this.state.controlKegList.filter((k) => k.id === id)[0];
+    this.setState({ selectedKeg: selectedKeg, newFormDisplay: false });
   };
 
   render() {
@@ -52,10 +59,13 @@ class KegControl extends React.Component {
           onNewKeg={this.handleNewKeg}
         />
       );
+    } else if (this.state.selectedKeg != null) {
+      display = <KegDetail keg={this.state.selectedKeg} closeDetail={this.handleResetClick} />;
     }
+
     return (
       <>
-        <KegList kegList={this.state.controlKegList} />
+        <KegList kegList={this.state.controlKegList} onSelectKeg={this.handleSelectKeg} />
         <button className="btn btn-dark" onClick={this.handleNewClick}>
           Add New Keg
         </button>

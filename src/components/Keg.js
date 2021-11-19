@@ -4,9 +4,11 @@ import PropTypes from "prop-types";
 function Keg(props) {
   return (
     <>
-      <p>
-        {props.name} - {props.brand}: ${props.price}/pint
-      </p>
+      <div onClick={() => props.kegSelect(props.id)}>
+        <p>
+          {props.name} - {props.brand}: ${props.price}/pint
+        </p>
+      </div>
     </>
   );
 }
@@ -15,6 +17,8 @@ Keg.propTypes = {
   name: PropTypes.string,
   brand: PropTypes.string,
   price: PropTypes.number,
+  id: PropTypes.string,
+  onTicketSelect: PropTypes.func,
 };
 
 export default Keg;
