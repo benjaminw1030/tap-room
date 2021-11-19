@@ -14,7 +14,7 @@ class KegControl extends React.Component {
           brand: "testbrand",
           flavor: "testflavor",
           alcohol: 5,
-          pints: 128,
+          pints: 124,
           price: 4,
           id: "1",
         },
@@ -23,7 +23,7 @@ class KegControl extends React.Component {
           brand: "testbrand2",
           flavor: "testflavor2",
           alcohol: 4,
-          pints: 128,
+          pints: 124,
           price: 4.5,
           id: "2",
         },
@@ -42,7 +42,11 @@ class KegControl extends React.Component {
 
   handleNewKeg = (newKeg) => {
     const newKegList = this.state.controlKegList.concat(newKeg);
-    this.setState({ controlKegList: newKegList, selectedKeg: null, newFormDisplay: false });
+    this.setState({
+      controlKegList: newKegList,
+      selectedKeg: null,
+      newFormDisplay: false,
+    });
   };
 
   handleSelectKeg = (id) => {
@@ -51,10 +55,21 @@ class KegControl extends React.Component {
   };
 
   handleDeleteKeg = (id) => {
-    console.log(id)
     const newKeglist = this.state.controlKegList.filter((k) => k.id !== id);
-    console.log(newKeglist)
-    this.setState({ controlKegList: newKeglist, selectedKeg: null, newFormDisplay: false })
+    this.setState({
+      controlKegList: newKeglist,
+      selectedKeg: null,
+      newFormDisplay: false,
+    });
+  };
+
+  handleSellPint = (id) => {
+    const newKegList = [...this.state.controlKegList];
+    const index = this.state.controlKegList.findIndex((k) => k.id === id);
+    if (newKegList[index].pints > 0) {
+      newKegList[index].pints--;
+    }
+    this.setState({ controlKegList: newKegList });
   };
 
   render() {
@@ -72,6 +87,7 @@ class KegControl extends React.Component {
           keg={this.state.selectedKeg}
           closeDetail={this.handleResetClick}
           onDeletingKeg={this.handleDeleteKeg}
+          onSellPint={this.handleSellPint}
         />
       );
     }

@@ -6,7 +6,7 @@ function Keg(props) {
     <>
       <div onClick={() => props.kegSelect(props.id)}>
         <p>
-          {props.name} - {props.brand}: ${props.price}/pint
+          {props.name} - {props.brand}: ${props.price}/pint {props.pints}
         </p>
       </div>
     </>
