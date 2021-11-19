@@ -42,12 +42,19 @@ class KegControl extends React.Component {
 
   handleNewKeg = (newKeg) => {
     const newKegList = this.state.controlKegList.concat(newKeg);
-    this.setState({ controlKegList: newKegList, newFormDisplay: false });
+    this.setState({ controlKegList: newKegList, selectedKeg: null, newFormDisplay: false });
   };
 
   handleSelectKeg = (id) => {
     const selectedKeg = this.state.controlKegList.filter((k) => k.id === id)[0];
     this.setState({ selectedKeg: selectedKeg, newFormDisplay: false });
+  };
+
+  handleDeleteKeg = (id) => {
+    console.log(id)
+    const newKeglist = this.state.controlKegList.filter((k) => k.id !== id);
+    console.log(newKeglist)
+    this.setState({ controlKegList: newKeglist, selectedKeg: null, newFormDisplay: false })
   };
 
   render() {
@@ -60,12 +67,21 @@ class KegControl extends React.Component {
         />
       );
     } else if (this.state.selectedKeg != null) {
-      display = <KegDetail keg={this.state.selectedKeg} closeDetail={this.handleResetClick} />;
+      display = (
+        <KegDetail
+          keg={this.state.selectedKeg}
+          closeDetail={this.handleResetClick}
+          onDeletingKeg={this.handleDeleteKeg}
+        />
+      );
     }
 
     return (
       <>
-        <KegList kegList={this.state.controlKegList} onSelectKeg={this.handleSelectKeg} />
+        <KegList
+          kegList={this.state.controlKegList}
+          onSelectKeg={this.handleSelectKeg}
+        />
         <button className="btn btn-dark" onClick={this.handleNewClick}>
           Add New Keg
         </button>

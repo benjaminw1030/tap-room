@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props) {
-  const { keg } = props;
+  const { keg, closeDetail, onDeletingKeg } = props;
 
   return (
     <>
@@ -13,12 +13,20 @@ function KegDetail(props) {
       <p>Alcohol Content: {keg.alcohol}%</p>
       <p>Pints left: {keg.pints}</p>
       <p>Price Per Pint: ${keg.brand}</p>
+      <button className="btn btn-dark" onClick={() => onDeletingKeg(keg.id)}>
+        Delete Keg
+      </button>
+      <button className="btn btn-dark" onClick={() => closeDetail()}>
+        Close Keg Details
+      </button>
     </>
   );
 }
 
 KegDetail.propTypes = {
   keg: PropTypes.object,
+  closeDetail: PropTypes.func,
+  onDeletingKeg: PropTypes.func,
 };
 
 export default KegDetail;
