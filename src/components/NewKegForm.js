@@ -10,16 +10,17 @@ function NewKegForm(props) {
       name: event.target.name.value,
       brand: event.target.brand.value,
       flavor: event.target.flavor.value,
-      alcohol: event.target.alcohol.value,
-      pints: event.target.pints.value,
-      price: event.target.price.value,
+      alcohol: parseInt(event.target.alcohol.value),
+      pints: parseInt(event.target.pints.value),
+      price: parseInt(event.target.price.value),
       id: v4(),
     });
   }
 
   return (
     <>
-      <KegForm handleFormSubmit={handleNewKegForm} buttonText="Add this keg" />
+    <h2>Creating a New Keg</h2>
+      <KegForm handleFormSubmit={handleNewKegForm} onBackButton= {props.onBackButton} buttonText="Add this keg" />
     </>
   );
 }

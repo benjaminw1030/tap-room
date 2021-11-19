@@ -13,12 +13,14 @@ function KegForm(props) {
         <input type="number" name="price" placeholder="Price per pint" />
         <button className="btn btn-dark" type="submit">{props.buttonText}</button>
       </form>
+      <button className="btn btn-dark" onClick={props.onBackButton}>Go Back</button>
     </>
   );
 }
 
 KegForm.propTypes = {
   handleFormSubmit: PropTypes.func,
+  onbackButton: PropTypes.func,
   buttonText: PropTypes.string,
 }
 

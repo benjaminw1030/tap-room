@@ -34,11 +34,16 @@ class KegControl extends React.Component {
     };
   }
 
-  handleResetClick = () =>
-    this.setState({ newFormDisplay: false, selectedKeg: null });
+  handleResetClick = () => {
+    this.setState({ newFormDisplay: false, selectedKeg: null, editing: false });
+  };
 
   handleNewClick = () => {
     this.setState({ newFormDisplay: true, selectedKeg: null });
+  };
+
+  handleEditClick = () => {
+    this.state.editing ? this.setState({ editing: false}) : this.setState({ editing: true });
   };
 
   handleNewKeg = (newKeg) => {
@@ -85,17 +90,18 @@ class KegControl extends React.Component {
     if (this.state.newFormDisplay) {
       display = (
         <NewKegForm
-          onResetClick={this.handleResetClick}
           onNewKeg={this.handleNewKeg}
+          onBackButton={this.handleResetClick}
         />
       );
-    } else if (this.state.selectedKeg != null) {
+    } else if (this.state.selectedKeg != null && !this.state.editing) {
       display = (
         <KegDetail
           keg={this.state.selectedKeg}
           closeDetail={this.handleResetClick}
           onDeletingKeg={this.handleDeleteKeg}
           onSellPint={this.handleSellPint}
+          onEditClick={this.handleEditClick}
         />
       );
     } else if (this.state.selectedKeg != null && this.state.editing) {
@@ -103,7 +109,8 @@ class KegControl extends React.Component {
         <>
           <EditKegForm
             onEditKeg={this.handleEditKeg}
-            closeDetail={this.handleResetClick}
+            onBackButton={this.handleEditClick}
+            keg={this.state.selectedKeg}
           />
         </>
       );
