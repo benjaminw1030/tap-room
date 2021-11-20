@@ -5,15 +5,30 @@ function KegForm(props) {
   return (
     <>
       <form onSubmit={props.handleFormSubmit}>
-        <input type="text" name="name" placeholder="Keg Name" />
-        <input type="text" name="brand" placeholder="Brand" />
-        <input type="text" name="flavor" placeholder="Flavor Description" />
-        <input type="number" name="alcohol" placeholder="Alcohol Content" />
-        <input type="number" name="pints" placeholder="Pints in Keg" />
-        <input type="number" name="price" placeholder="Price per pint" />
-        <button className="btn btn-dark" type="submit">{props.buttonText}</button>
+        <div className="form-group">
+        <input type="text" className="form-control" name="name" placeholder="Keg Name" />
+        </div>
+        <div className="form-group">
+        <input type="text" className="form-control" name="brand" placeholder="Brand" />
+        </div>
+        <div className="form-group">
+        <input type="text" className="form-control" name="flavor" placeholder="Flavor Description" />
+        </div>
+        <div className="form-group">
+        <input type="number" className="form-control" name="alcohol" placeholder="Alcohol Content" />
+        </div>
+        <div className="form-group">
+        <input type="number" className="form-control" name="pints" placeholder="Pints in Keg" />
+        <small id="pints" class="form-text text-muted">Leave blank to start with standard 124 pints.</small>
+        </div>
+        <div className="form-group">
+        <input type="number" className="form-control" name="price" placeholder="Price per pint" />
+        </div>
+        <div className="btn-group w-100">
+          <button className="btn btn-dark" type="submit">{props.buttonText}</button>
+          <button className="btn btn-dark" onClick={props.onBackButton}>Go Back</button>
+        </div>
       </form>
-      <button className="btn btn-dark" onClick={props.onBackButton}>Go Back</button>
     </>
   );
 }

@@ -3,6 +3,7 @@ import KegList from "./KegList";
 import NewKegForm from "./NewKegForm";
 import EditKegForm from "./EditKegForm";
 import KegDetail from "./KegDetail";
+import donkeyKong from "./../img/donkey-kong.jpg";
 
 class KegControl extends React.Component {
   constructor(props) {
@@ -10,22 +11,31 @@ class KegControl extends React.Component {
     this.state = {
       controlKegList: [
         {
-          name: "testname",
-          brand: "testbrand",
-          flavor: "testflavor",
-          alcohol: 5,
+          name: "Diddy's Double IPA",
+          brand: "DK Breweries",
+          flavor: "Strong and hoppy",
+          alcohol: 8,
           pints: 124,
           price: 4,
           id: "1",
         },
         {
-          name: "testname2",
-          brand: "testbrand2",
-          flavor: "testflavor2",
-          alcohol: 4,
+          name: "K.Rool's Kölsch",
+          brand: "KremCo",
+          flavor: "light and fruity",
+          alcohol: 5,
           pints: 124,
           price: 4.5,
           id: "2",
+        },
+        {
+          name: "Ape Amber Ale",
+          brand: "DK Breweries",
+          flavor: "notes of citrus",
+          alcohol: 6,
+          pints: 124,
+          price: 4.5,
+          id: "3",
         },
       ],
       newFormDisplay: false,
@@ -43,7 +53,9 @@ class KegControl extends React.Component {
   };
 
   handleEditClick = () => {
-    this.state.editing ? this.setState({ editing: false}) : this.setState({ editing: true });
+    this.state.editing
+      ? this.setState({ editing: false })
+      : this.setState({ editing: true });
   };
 
   handleNewKeg = (newKeg) => {
@@ -74,7 +86,7 @@ class KegControl extends React.Component {
     let editedKegList = [...this.state.controlKegList];
     editedKegList[index] = keg;
     this.setState({ controlKegList: editedKegList, editing: false });
-  }
+  };
 
   handleSellPint = (id) => {
     let newKegList = [...this.state.controlKegList];
@@ -86,7 +98,9 @@ class KegControl extends React.Component {
   };
 
   render() {
-    let display = null; //add in image
+    let display = (
+      <img src={donkeyKong} alt="donkey kong" className="donkey-kong" />
+    );
     if (this.state.newFormDisplay) {
       display = (
         <NewKegForm
@@ -114,18 +128,28 @@ class KegControl extends React.Component {
           />
         </>
       );
+    } else {
+      display = (
+        <img src={donkeyKong} alt="donkey kong" className="donkey-kong" />
+      );
     }
 
     return (
       <>
-        <KegList
-          kegList={this.state.controlKegList}
-          onSelectKeg={this.handleSelectKeg}
-        />
-        <button className="btn btn-dark" onClick={this.handleNewClick}>
-          Add New Keg
-        </button>
-        {display}
+        <div className="row">
+          <div className="col-md-5 keg-list">
+            <KegList
+              kegList={this.state.controlKegList}
+              onSelectKeg={this.handleSelectKeg}
+            />
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-dark" onClick={this.handleNewClick}>
+                Add New Keg
+              </button>
+            </div>
+          </div>
+          <div className="col-md-6 keg-display">{display}</div>
+        </div>
       </>
     );
   }

@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,35 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+.keg-list, .keg-display {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  height: 85vh
+}
+
+.row {
+  justify-content: space-evenly;
+}
+
+.donkey-kong {
+  width: 100%;
+}
+
+.form-group {
+  margin: 10px 0 10px 0;
+}
+
+.btn-group {
+  margin-top: 20px;
+}
+
+.subheading {
+  margin-bottom: 15px;
+}
+
+.header{
+  margin: 20px 0 20px 0;
 }

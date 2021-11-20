@@ -15,23 +15,29 @@ function KegDetail(props) {
 
   return (
     <>
-      <h3>Keg Details</h3>
-      <h4>{keg.name}</h4>
-      <p>Brand: {keg.brand}</p>
-      <p>Flavor:{keg.flavor}</p>
-      <p>Alcohol Content: {keg.alcohol}%</p>
-      <p>Pints left: {keg.pints}</p>
-      <p>Price Per Pint: ${keg.price}</p>
-      {sellPintButton}
-      <button className="btn btn-dark" onClick={() => onEditClick()}>
-        Edit Keg
-      </button>
-      <button className="btn btn-dark" onClick={() => onDeletingKeg(keg.id)}>
-        Delete Keg
-      </button>
-      <button className="btn btn-dark" onClick={() => closeDetail()}>
-        Close Keg Details
-      </button>
+      <h3 className="text-center subheading">Keg Details</h3>
+      <div className="d-flex justify-content-center">
+        <div className="w-75">
+          <p>Name: {keg.name}</p>
+          <p>Brand: {keg.brand}</p>
+          <p>Flavor: {keg.flavor}</p>
+          <p>Alcohol Content: {keg.alcohol}%</p>
+          <p>Pints left: {keg.pints}</p>
+          <p>Price Per Pint: ${keg.price}</p>
+        </div>
+      </div>
+      <div className="btn-group w-100">
+        {sellPintButton}
+        <button className="btn btn-dark" onClick={() => onEditClick()}>
+          Edit Keg
+        </button>
+        <button className="btn btn-dark" onClick={() => onDeletingKeg(keg.id)}>
+          Delete Keg
+        </button>
+        <button className="btn btn-dark" onClick={() => closeDetail()}>
+          Close Keg Details
+        </button>
+      </div>
     </>
   );
 }
