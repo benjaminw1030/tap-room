@@ -34,7 +34,7 @@ class KegControl extends React.Component {
           flavor: "notes of citrus",
           alcohol: 6,
           pints: 124,
-          price: 4.5,
+          price: 5.25,
           id: "3",
         },
       ],
@@ -69,7 +69,7 @@ class KegControl extends React.Component {
 
   handleSelectKeg = (id) => {
     const selectedKeg = this.state.controlKegList.filter((k) => k.id === id)[0];
-    this.setState({ selectedKeg: selectedKeg, newFormDisplay: false });
+    this.setState({ selectedKeg: selectedKeg, newFormDisplay: false, editing: false });
   };
 
   handleDeleteKeg = (id) => {
@@ -85,7 +85,7 @@ class KegControl extends React.Component {
     const index = this.state.controlKegList.findIndex((k) => k.id === keg.id);
     let editedKegList = [...this.state.controlKegList];
     editedKegList[index] = keg;
-    this.setState({ controlKegList: editedKegList, editing: false });
+    this.setState({ controlKegList: editedKegList, editing: false, selectedKeg: null });
   };
 
   handleSellPint = (id) => {

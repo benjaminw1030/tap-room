@@ -23,7 +23,7 @@ function KegDetail(props) {
           <p>Flavor: {keg.flavor}</p>
           <p>Alcohol Content: {keg.alcohol}%</p>
           <p>Pints left: {keg.pints}</p>
-          <p>Price Per Pint: ${keg.price}</p>
+          <p>Price Per Pint: ${keg.price.toFixed(2)}</p>
         </div>
       </div>
       <div className="btn-group w-100">

@@ -12,11 +12,12 @@ code {
     monospace;
 } */
 
-.keg-list, .keg-display {
+.keg-list,
+.keg-display {
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
-  height: 85vh
+  height: 85vh;
 }
 
 .row {
@@ -39,6 +40,6 @@ code {
   margin-bottom: 15px;
 }
 
-.header{
+.header {
   margin: 20px 0 20px 0;
 }
