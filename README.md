@@ -17,6 +17,10 @@ A full CRUD application made in React.js.
 ## Description
 This application was made in React.js; the user can create kegs of alcohol, view details on kegs, delete kegs, edit kegs, and "sell" pints from the keg (which will decrement the pint meter).
 
+The layout is diagrammed as follows:
+![app diagram](/diagram.png)
+
+
 ### Technology Requirements
 
 * A code editor like [VS Code](https://code.visualstudio.com/)
